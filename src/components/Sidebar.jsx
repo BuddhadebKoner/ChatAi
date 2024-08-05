@@ -68,6 +68,7 @@ export default function Components() {
             <button
                type='button'
                onClick={toggleNewchat}
+               id='newchatbtnicon'
             >
                <img src={data.newchat} alt="" />
             </button>

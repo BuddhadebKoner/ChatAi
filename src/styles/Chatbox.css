@@ -112,3 +112,46 @@
 .section_content {
     margin: 5px 0;
 }
+
+
+
+@media (max-width: 520px) {
+    .chatbox_container_section {
+        padding: 1rem; 
+    }
+    
+    .input_section_container {
+        flex-direction: row; /* Stack input and submit button vertically */
+        padding: 5px; /* Adjust padding for mobile */
+    }
+    
+    .input_prompt {
+        width: calc(100% - 60px); /* Adjust width to fit with button */
+        padding: 0 10px; /* Adjust padding */
+    }
+    
+    .prompt_submit {
+        width: 40px; /* Adjust button size for mobile */
+        height: 40px;
+    }
+
+    .no_chat_text {
+        font-size: 2rem; /* Adjust font size for mobile */
+    }
+
+    .god_avatar img {
+        width: 20px; /* Adjust avatar size for mobile */
+        height: 20px;
+    }
+
+    .section_content {
+        margin: 2px 0; /* Adjust margins for mobile */
+    }
+     .no_chat_text{
+        font-size: 2rem;
+    }
+    .prompt{
+        width: fit-content;
+        margin-right: 0;
+    }
+}

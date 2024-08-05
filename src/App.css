@@ -30,7 +30,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .input_section {
@@ -43,4 +43,22 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+}
+
+
+
+
+/* responsive */
+@media (max-width: 520px) {
+    .sidebar_section {
+        display: none;
+    }
+
+    .app {
+        padding-top: 10px;
+    }
+    .chat_section{
+        width: fit-content;
+    }
+
 }

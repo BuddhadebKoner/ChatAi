@@ -102,3 +102,21 @@
 .removebtn:hover {
    scale: 1.1;
 }
+
+/* responsive */
+@media (max-width: 520px) {
+   .sidebar_container_newchat {
+      display: none;
+   }
+
+   #newchatbtnicon {
+      display: none;
+   }
+   .sidebar_container_toggle_style{
+      display: none;
+   }
+   .sidebar_container{
+      display: none;
+   }
+   
+}
