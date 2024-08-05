@@ -1,28 +1,28 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../styles/Sidebar.css';
 import data from '../assets/data';
 import { ChatContext } from '../context/ChatContext';
 
 export default function Components() {
    const { messages, setMessages, isBtnActive } = useContext(ChatContext);
+   const [history, setHistory] = useState(getHistory());
 
    // Retrieve history from local storage
-   const getHistory = () => {
+   function getHistory() {
       return JSON.parse(localStorage.getItem('history')) || [];
-   };
+   }
+
    // Save history to local storage
-   const saveHistory = (history) => {
-
-      localStorage.setItem('history', JSON.stringify(history));
-
-   };
+   function saveHistory(newHistory) {
+      localStorage.setItem('history', JSON.stringify(newHistory));
+      setHistory(newHistory); // Update the state after saving to local storage
+   }
 
    const toggleNewchat = () => {
       console.log("New chat");
       if (isBtnActive) {
          if (messages.length > 0) {
             const newMessage = messages.map(({ type, response }) => ({ type, response }));
-            const history = getHistory();
             const nextIndex = history.length ? Math.max(history.map(item => item.index)) + 1 : 1;
 
             // Push new message into history and update local storage
@@ -42,14 +42,13 @@ export default function Components() {
    const handelHistoryDelete = (index) => {
       console.log(index);
 
-      // Retrieve history from local storage, remove the item at the specified index, and update local storage
-      const history = getHistory();
+      // Remove the item at the specified index from history and update local storage
       const updatedHistory = history.filter(item => item.index !== index);
       saveHistory(updatedHistory);
    };
 
    // Extract user responses for rendering
-   const userResponsesHistory = getHistory().map(({ messages }) =>
+   const userResponsesHistory = history.map(({ messages }) =>
       messages.filter(({ type }) => type === 'user').map(({ response }) => response)
    );
 
@@ -76,14 +75,23 @@ export default function Components() {
          <div className="history_container_section">
             {
                userResponsesHistory.map((userResponses, index) => (
-                  <div key={index} className="sidebar_container_history sidebar_container_toggle_style">
-                     {userResponses.map((response, idx) => (
-                        <p key={idx}>{response}</p>
-                     ))}
+                  <div
+                     key={index}
+                     className="sidebar_container_history sidebar_container_toggle_style "
+                  >
+                     {userResponses.map((response, idx) => {
+                        const words = response.split(/\s+/).filter(Boolean);
+
+                        const trimmedResponse = words.length > 5 ? words.slice(0, 5).join(' ') : response;
+
+                        return (
+                           <p key={idx}>{trimmedResponse}</p>
+                        );
+                     })}
                      <button
                         type='button'
                         className='removebtn'
-                        onClick={() => handelHistoryDelete(getHistory()[index].index)}
+                        onClick={() => handelHistoryDelete(history[index].index)}
                      >
                         <img src={data.remove} alt="Remove" />
                      </button>

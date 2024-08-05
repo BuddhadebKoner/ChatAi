@@ -4,7 +4,7 @@ import data from '../assets/data';
 import { ChatContext } from '../context/ChatContext';
 
 export default function Input() {
-   const { inputValue, setInputValue, sendApiRequest ,isBtnActive} = useContext(ChatContext);
+   const { inputValue, setInputValue, sendApiRequest, isBtnActive } = useContext(ChatContext);
 
    // Function to handle button click
    const handleClick = () => {
@@ -12,6 +12,11 @@ export default function Input() {
          // console.log(inputValue.trim());
          sendApiRequest(inputValue.trim());
          setInputValue('');
+      }
+   };
+   const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+         handleClick();
       }
    };
 
@@ -24,6 +29,7 @@ export default function Input() {
             className='input_prompt'
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
          />
          <button
             type="button"
