@@ -67,6 +67,9 @@
 .sidebar_container_history {
    background-color: #393939;
    color: #D1D1D1;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .sidebar_container_userprofile {

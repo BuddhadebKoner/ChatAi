@@ -48,8 +48,9 @@ const ChatProvider = ({ children }) => {
       } finally {
          setIsBtnActive(true);
       }
-
+      
    };
+
 
    return (
       <ChatContext.Provider value={{ messages, setMessages, inputValue, setInputValue, sendApiRequest, isBtnActive }}>

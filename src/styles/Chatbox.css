@@ -17,7 +17,7 @@
     font-weight: 700;
     color: white;
     opacity: 0.3;
-    display: none;
+    /* display: none; */
 }
 
 .chats_container {

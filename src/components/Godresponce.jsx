@@ -4,6 +4,7 @@ import '../styles/Chatbox.css';
 
 export default function Components({ response }) {
    // Split the response into sections based on headers (e.g., **Special Theory of Relativity**)
+
    const sections = response.split(/\*\*|\*\*/).filter(Boolean);
 
    return (
@@ -11,7 +12,7 @@ export default function Components({ response }) {
          <div className="god_prompt prompt">
             <div className="god_avatar avatar">
                <img src={data.user} alt="God" />
-               <p>GOD</p>
+               <p>God</p>
             </div>
             <div className="response_content">
                {sections.map((section, index) => {
