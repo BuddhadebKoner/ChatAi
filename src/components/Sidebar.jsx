@@ -4,40 +4,66 @@ import data from '../assets/data';
 import { ChatContext } from '../context/ChatContext';
 
 export default function Components() {
-   const { messages, setMessages } = useContext(ChatContext);
+   const { messages, setMessages, isBtnActive } = useContext(ChatContext);
+
+   // Retrieve history from local storage
+   const getHistory = () => {
+      return JSON.parse(localStorage.getItem('history')) || [];
+   };
+
+   // Save history to local storage
+   const saveHistory = (history) => {
+      localStorage.setItem('history', JSON.stringify(history));
+   };
 
    const toggleNewchat = () => {
       console.log("New chat");
+      if (isBtnActive) {
+         if (messages.length > 0) {
+            const newMessage = messages.map(({ type, response }) => ({ type, response }));
+            const history = getHistory();
+            const nextIndex = history.length ? Math.max(history.map(item => item.index)) + 1 : 1;
 
-      if (messages.length > 0) {
-         const history = JSON.parse(localStorage.getItem('history')) || [];
-         const newMessage = messages.map(({ type, response }) => ({ type, response }));
-         const nextIndex = history.length + 1;
+            // Push new message into history and update local storage
+            const updatedHistory = [...history, { index: nextIndex, messages: newMessage }];
+            saveHistory(updatedHistory);
 
-         // Push new message into history and save it
-         history.push({ index: nextIndex, messages: newMessage });
-         localStorage.setItem('history', JSON.stringify(history));
-
-         // Clear messages after storing
-         setMessages([]);
+            // Clear messages after storing
+            setMessages([]);
+         } else {
+            console.log("No messages to store");
+         }
       } else {
-         console.log("No messages to store");
+         console.log("API request in progress");
       }
    };
 
-   // Retrieve and parse history once
-   const history = JSON.parse(localStorage.getItem('history')) || [];
+   const handelHistoryDelete = (index) => {
+      console.log(index);
+
+      // Retrieve history from local storage, remove the item at the specified index, and update local storage
+      const history = getHistory();
+      const updatedHistory = history.filter(item => item.index !== index);
+      saveHistory(updatedHistory);
+   };
 
    // Extract user responses for rendering
-   const userResponsesHistory = history.map(({ messages }) =>
+   const userResponsesHistory = getHistory().map(({ messages }) =>
       messages.filter(({ type }) => type === 'user').map(({ response }) => response)
    );
 
    return (
       <div className="sidebar_container">
          <div className="sidebar_container_icons">
-            <img src={data.sidebar} alt="" />
-            <img src={data.newchat} alt="" />
+            <button type='button'>
+               <img src={data.sidebar} alt="" />
+            </button>
+            <button
+               type='button'
+               onClick={toggleNewchat}
+            >
+               <img src={data.newchat} alt="" />
+            </button>
          </div>
          <div
             className="sidebar_container_newchat sidebar_container_toggle_style"
@@ -52,8 +78,12 @@ export default function Components() {
                   {userResponses.map((response, idx) => (
                      <p key={idx}>{response}</p>
                   ))}
-                  <button>
-                     <img src={data.remove} alt="" />
+                  <button
+                     type='button'
+                     className='removebtn'
+                     onClick={() => handelHistoryDelete(getHistory()[index].index)}
+                  >
+                     <img src={data.remove} alt="Remove" />
                   </button>
                </div>
             ))}

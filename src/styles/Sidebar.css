@@ -28,7 +28,8 @@
    justify-content: center;
    margin: 10px 0 10px 0;
    padding: 10px 0 10px 0;
-   overflow: auto;
+   overflow-y: auto;
+   overflow-x: hidden;
 }
 
 /* default style  */
@@ -40,7 +41,7 @@
    align-items: center;
    justify-content: flex-start;
    border-radius: 20px;
-   padding: 20px 1.1rem;
+   padding: 10px 1.1rem;
    margin-top: 20px;
    cursor: pointer;
 }
@@ -70,7 +71,13 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
+   transition: background-color 0.3s ease;
 }
+
+.sidebar_container_history:hover {
+   background-color: #4D4D4D;
+}
+
 
 .sidebar_container_userprofile {
    background-color: #393939;
@@ -79,4 +86,19 @@
    align-items: center;
    justify-content: flex-start;
    gap: 20px;
+}
+
+
+.removebtn {
+   background-color: #393939;
+   color: #D1D1D1;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px;
+   border-radius: 10px;
+}
+
+.removebtn:hover {
+   scale: 1.1;
 }
