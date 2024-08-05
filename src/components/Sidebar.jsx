@@ -31,10 +31,10 @@ export default function Components() {
 
 
          } else {
-            console.log("No messages to store");
+            console.warn("No messages to store");
          }
       } else {
-         console.log("API request in progress");
+         console.warn("API request in progress");
       }
    };
 

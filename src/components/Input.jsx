@@ -37,7 +37,10 @@ export default function Input() {
             onClick={handleClick}
             disabled={!isBtnActive}
          >
-            <img src={data.uparrow} alt="Send" />
+            {
+               !isBtnActive ? "" : <img src={data.uparrow} alt="Send" />
+            }
+
          </button>
       </div>
    );

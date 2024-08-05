@@ -47,17 +47,16 @@
 }
 
 .input_prompt {
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color: #393939;
     border: none;
     border-radius: 30px;
     padding: 10px;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     border: none;
     padding: 0px 20px;
-    font-size: 20px;
 }
 
 .input_prompt:focus {
