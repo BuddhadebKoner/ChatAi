@@ -4,22 +4,19 @@ import data from '../assets/data';
 import { ChatContext } from '../context/ChatContext';
 
 export default function Components() {
-   const { messages, setMessages, isBtnActive } = useContext(ChatContext);
+   const { messages, setMessages, isBtnActive, setIsBtnActive } = useContext(ChatContext);
    const [history, setHistory] = useState(getHistory());
 
-   // Retrieve history from local storage
    function getHistory() {
       return JSON.parse(localStorage.getItem('history')) || [];
    }
 
-   // Save history to local storage
    function saveHistory(newHistory) {
       localStorage.setItem('history', JSON.stringify(newHistory));
       setHistory(newHistory); // Update the state after saving to local storage
    }
 
    const toggleNewchat = () => {
-      console.log("New chat");
       if (isBtnActive) {
          if (messages.length > 0) {
             const newMessage = messages.map(({ type, response }) => ({ type, response }));
@@ -27,10 +24,12 @@ export default function Components() {
 
             // Push new message into history and update local storage
             const updatedHistory = [...history, { index: nextIndex, messages: newMessage }];
+           
+
+            setMessages([]);
             saveHistory(updatedHistory);
 
-            // Clear messages after storing
-            setMessages([]);
+
          } else {
             console.log("No messages to store");
          }
@@ -40,7 +39,7 @@ export default function Components() {
    };
 
    const handelHistoryDelete = (index) => {
-      console.log(index);
+      // console.log(index);
 
       // Remove the item at the specified index from history and update local storage
       const updatedHistory = history.filter(item => item.index !== index);
@@ -51,6 +50,14 @@ export default function Components() {
    const userResponsesHistory = history.map(({ messages }) =>
       messages.filter(({ type }) => type === 'user').map(({ response }) => response)
    );
+
+   const historyChatRecive = (index) => {
+      const data = JSON.parse(localStorage.getItem('history'));
+      // console.log(data[index]);
+      setMessages(data[index].messages);
+   }
+
+
 
    return (
       <div className="sidebar_container">
@@ -78,6 +85,7 @@ export default function Components() {
                   <div
                      key={index}
                      className="sidebar_container_history sidebar_container_toggle_style "
+                     onClick={() => historyChatRecive(index)}
                   >
                      {userResponses.map((response, idx) => {
                         const words = response.split(/\s+/).filter(Boolean);

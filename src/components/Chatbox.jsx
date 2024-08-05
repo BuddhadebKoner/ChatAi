@@ -8,6 +8,8 @@ import { ChatContext } from '../context/ChatContext';
 export default function Components() {
    const { messages } = useContext(ChatContext);
    const [noChat, setNoChat] = useState(false);
+   // console.log(messages);
+   
 
    useEffect(() => {
       setNoChat(messages.length === 0);

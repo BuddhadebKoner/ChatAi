@@ -48,12 +48,12 @@ const ChatProvider = ({ children }) => {
       } finally {
          setIsBtnActive(true);
       }
-      
+
    };
 
 
    return (
-      <ChatContext.Provider value={{ messages, setMessages, inputValue, setInputValue, sendApiRequest, isBtnActive }}>
+      <ChatContext.Provider value={{ messages, setMessages, inputValue, setInputValue, sendApiRequest, isBtnActive, setIsBtnActive }}>
          {children}
       </ChatContext.Provider>
    );

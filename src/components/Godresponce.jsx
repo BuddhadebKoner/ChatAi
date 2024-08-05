@@ -22,7 +22,6 @@ export default function Components({ response }) {
                   ) : (
                      <p key={index} className="section_content">{section}</p>
                   );
-
                   return content;
                })}
             </div>
