@@ -74,24 +74,22 @@ export default function Components() {
             <img src={data.add} alt="" />
          </div>
          <div className="history_container_section">
-            {useEffect(() => {
-               {
-                  userResponsesHistory.map((userResponses, index) => (
-                     <div key={index} className="sidebar_container_history sidebar_container_toggle_style">
-                        {userResponses.map((response, idx) => (
-                           <p key={idx}>{response}</p>
-                        ))}
-                        <button
-                           type='button'
-                           className='removebtn'
-                           onClick={() => handelHistoryDelete(getHistory()[index].index)}
-                        >
-                           <img src={data.remove} alt="Remove" />
-                        </button>
-                     </div>
-                  ))
-               }
-            }, [userResponsesHistory])}
+            {
+               userResponsesHistory.map((userResponses, index) => (
+                  <div key={index} className="sidebar_container_history sidebar_container_toggle_style">
+                     {userResponses.map((response, idx) => (
+                        <p key={idx}>{response}</p>
+                     ))}
+                     <button
+                        type='button'
+                        className='removebtn'
+                        onClick={() => handelHistoryDelete(getHistory()[index].index)}
+                     >
+                        <img src={data.remove} alt="Remove" />
+                     </button>
+                  </div>
+               ))
+            }
          </div>
          <div className="sidebar_container_userprofile sidebar_container_toggle_style">
             <img src={data.user} alt="" />
