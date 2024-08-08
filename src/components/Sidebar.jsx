@@ -24,7 +24,7 @@ export default function Components() {
 
             // Push new message into history and update local storage
             const updatedHistory = [...history, { index: nextIndex, messages: newMessage }];
-           
+
 
             setMessages([]);
             saveHistory(updatedHistory);
@@ -56,19 +56,34 @@ export default function Components() {
       // console.log(data[index]);
       setMessages(data[index].messages);
    }
+   const sidebarHandel = () => {
+      console.log('sidebarHandel');
+
+   }
+
+   const resetPage = () => {
+      localStorage.clear();
+      window.location.reload();
+   }
+
 
 
 
    return (
       <div className="sidebar_container">
          <div className="sidebar_container_icons">
-            <button type='button'>
-               <img src={data.sidebar} alt="" />
+            <button
+               type='button'
+               className='sidebar_btns_custom_cursor'
+               onClick={resetPage}
+            >
+               <img src={data.refresh} alt="" onClick={sidebarHandel} />
             </button>
             <button
                type='button'
                onClick={toggleNewchat}
                id='newchatbtnicon'
+               className='sidebar_btns_custom_cursor'
             >
                <img src={data.newchat} alt="" />
             </button>
@@ -88,15 +103,11 @@ export default function Components() {
                      className="sidebar_container_history sidebar_container_toggle_style "
                      onClick={() => historyChatRecive(index)}
                   >
-                     {userResponses.map((response, idx) => {
-                        const words = response.split(/\s+/).filter(Boolean);
-
-                        const trimmedResponse = words.length > 5 ? words.slice(0, 5).join(' ') : response;
-
-                        return (
-                           <p key={idx}>{trimmedResponse}</p>
-                        );
-                     })}
+                     {userResponses.length > 0 && (
+                        <p key={0}>
+                           {userResponses[0].split(/\s+/).filter(Boolean).slice(0, 5).join(' ')}
+                        </p>
+                     )}
                      <button
                         type='button'
                         className='removebtn'
@@ -109,8 +120,10 @@ export default function Components() {
             }
          </div>
          <div className="sidebar_container_userprofile sidebar_container_toggle_style">
-            <img src={data.user} alt="" />
-            <p>Buddhadeb Koner</p>
+            <a href="https://github.com/BuddhadebKoner" target='_blank'>
+               <img src={data.logo1} alt="" />
+               <p>Buddhadeb Koner</p>
+            </a>
          </div>
       </div>
    );

@@ -44,6 +44,7 @@
     height: 50px;
     background-color: #9E9E9E;
     border-radius: 50%;
+    cursor: url(/cursor2.png), auto;
 }
 
 .input_prompt {
@@ -57,6 +58,7 @@
     font-size: 1.1rem;
     border: none;
     padding: 0px 20px;
+    cursor: url(/cursor2.png), auto;
 }
 
 .input_prompt:focus {
@@ -115,42 +117,53 @@
 
 
 
+
 @media (max-width: 520px) {
     .chatbox_container_section {
-        padding: 1rem; 
+        padding: 1rem;
     }
-    
+
     .input_section_container {
-        flex-direction: row; /* Stack input and submit button vertically */
-        padding: 5px; /* Adjust padding for mobile */
+        flex-direction: row;
+        /* Stack input and submit button vertically */
+        padding: 5px;
+        /* Adjust padding for mobile */
     }
-    
+
     .input_prompt {
-        width: calc(100% - 60px); /* Adjust width to fit with button */
-        padding: 0 10px; /* Adjust padding */
+        width: calc(100% - 60px);
+        /* Adjust width to fit with button */
+        padding: 0 10px;
+        /* Adjust padding */
     }
-    
+
     .prompt_submit {
-        width: 40px; /* Adjust button size for mobile */
+        width: 40px;
+        /* Adjust button size for mobile */
         height: 40px;
     }
 
     .no_chat_text {
-        font-size: 2rem; /* Adjust font size for mobile */
+        font-size: 2rem;
+        /* Adjust font size for mobile */
     }
 
     .god_avatar img {
-        width: 20px; /* Adjust avatar size for mobile */
+        width: 20px;
+        /* Adjust avatar size for mobile */
         height: 20px;
     }
 
     .section_content {
-        margin: 2px 0; /* Adjust margins for mobile */
+        margin: 2px 0;
+        /* Adjust margins for mobile */
     }
-     .no_chat_text{
+
+    .no_chat_text {
         font-size: 2rem;
     }
-    .prompt{
+
+    .prompt {
         width: fit-content;
         margin-right: 0;
     }

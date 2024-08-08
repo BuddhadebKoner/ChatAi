@@ -11,6 +11,7 @@ export default function src() {
   return (
     <ChatProvider>
       <div className="app">
+
         <div className="sidebar_section">
           <Sidebar />
         </div>

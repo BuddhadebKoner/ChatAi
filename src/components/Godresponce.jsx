@@ -11,7 +11,7 @@ export default function Components({ response }) {
       <div className="god_chat_container chat_container">
          <div className="god_prompt prompt">
             <div className="god_avatar avatar">
-               <img src={data.user} alt="God" />
+               <img src={data.logo1} alt="God" />
                <p>God</p>
             </div>
             <div className="response_content">

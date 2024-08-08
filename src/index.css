@@ -27,7 +27,6 @@ a {
 button {
    background: none;
    border: none;
-   cursor: pointer;
    font: inherit;
 }
 
@@ -110,12 +109,11 @@ button {
 
 /* Add more margin and padding utility classes as needed */
 
-/* Custom Styles */
 body {
    background-color: #393939;
-   /* Example for dark mode */
    color: #fff;
-   /* Example for dark mode text color */
+   cursor: url(../cursor1.png), auto;
+
 }
 
 /* Add more custom styles for your app here */

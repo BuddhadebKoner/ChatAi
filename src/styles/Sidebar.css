@@ -11,6 +11,11 @@
    justify-content: center;
 }
 
+.sidebar_btns_custom_cursor {
+   cursor: url(../../cursor2.png), auto;
+   padding: 5px;
+}
+
 .sidebar_container_icons {
    width: 100%;
    height: fit-content;
@@ -43,7 +48,8 @@
    border-radius: 20px;
    padding: 10px 1.1rem;
    margin-top: 20px;
-   cursor: pointer;
+   cursor: url(../../cursor2.png), auto;
+
 }
 
 .sidebar_container_toggle_style p {
@@ -82,12 +88,22 @@
 .sidebar_container_userprofile {
    background-color: #393939;
    margin-top: auto;
+   overflow: hidden;
+}
+
+.sidebar_container_userprofile a {
    display: flex;
    align-items: center;
    justify-content: flex-start;
-   gap: 20px;
+   gap: 15px;
+   text-decoration: none;
 }
 
+.sidebar_container_userprofile img {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+}
 
 .removebtn {
    background-color: #393939;
@@ -97,6 +113,7 @@
    justify-content: space-between;
    padding: 10px;
    border-radius: 10px;
+   cursor: url(../../cursor2.png), auto;
 }
 
 .removebtn:hover {
@@ -112,11 +129,13 @@
    #newchatbtnicon {
       display: none;
    }
-   .sidebar_container_toggle_style{
+
+   .sidebar_container_toggle_style {
       display: none;
    }
-   .sidebar_container{
+
+   .sidebar_container {
       display: none;
    }
-   
+
 }
