@@ -8,8 +8,6 @@ import { ChatContext } from '../context/ChatContext';
 export default function Components() {
    const { messages } = useContext(ChatContext);
    const [noChat, setNoChat] = useState(false);
-   // console.log(messages);
-   
 
    useEffect(() => {
       setNoChat(messages.length === 0);
@@ -26,9 +24,9 @@ export default function Components() {
                   <div className="chats_container">
                      {messages.map((chat, index) => {
                         if (chat.type === 'user') {
-                           return <Userresponse key={index} response={chat.response} />;
+                           return <Userresponse key={index} response={chat.response} messageId={chat.id} />;
                         } else if (chat.type === 'god') {
-                           return <Godresponse key={index} response={chat.response} />;
+                           return <Godresponse key={index} response={chat.response} messageId={chat.id} />;
                         }
                         return null;
                      })}

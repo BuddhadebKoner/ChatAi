@@ -66,9 +66,6 @@ export default function Components() {
       window.location.reload();
    }
 
-
-
-
    return (
       <div className="sidebar_container">
          <div className="sidebar_container_icons">

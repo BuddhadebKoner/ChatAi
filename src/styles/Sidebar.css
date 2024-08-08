@@ -89,14 +89,18 @@
    background-color: #393939;
    margin-top: auto;
    overflow: hidden;
+   
 }
 
 .sidebar_container_userprofile a {
+   width: 100%;
+   height: 100%;
    display: flex;
    align-items: center;
    justify-content: flex-start;
    gap: 15px;
    text-decoration: none;
+   cursor: url(../../cursor2.png), auto;
 }
 
 .sidebar_container_userprofile img {

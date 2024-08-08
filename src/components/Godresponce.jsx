@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import data from '../assets/data';
 import '../styles/Chatbox.css';
 
-export default function Components({ response }) {
-   // Split the response into sections based on headers (e.g., **Special Theory of Relativity**)
+export default function Components({ response, messageId }) {
+
 
    const sections = response.split(/\*\*|\*\*/).filter(Boolean);
+
 
    return (
       <div className="god_chat_container chat_container">
@@ -16,7 +17,7 @@ export default function Components({ response }) {
             </div>
             <div className="response_content">
                {sections.map((section, index) => {
-                  const isHeader = index % 2 === 0; 
+                  const isHeader = index % 2 === 0;
                   const content = isHeader ? (
                      <h3 key={index} className="section_header">{section}</h3>
                   ) : (
@@ -26,6 +27,8 @@ export default function Components({ response }) {
                })}
             </div>
          </div>
+
+         
       </div>
    );
 }
