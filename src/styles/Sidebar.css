@@ -12,7 +12,7 @@
 }
 
 .sidebar_btns_custom_cursor {
-   cursor: url(../../cursor2.png), auto;
+   cursor: url(/cursor2.png), auto;
    padding: 5px;
 }
 
@@ -48,7 +48,7 @@
    border-radius: 20px;
    padding: 10px 1.1rem;
    margin-top: 20px;
-   cursor: url(../../cursor2.png), auto;
+   cursor: url(/cursor2.png), auto;
 
 }
 
@@ -100,7 +100,7 @@
    justify-content: flex-start;
    gap: 15px;
    text-decoration: none;
-   cursor: url(../../cursor2.png), auto;
+   cursor: url(/cursor2.png), auto;
 }
 
 .sidebar_container_userprofile img {
@@ -117,7 +117,7 @@
    justify-content: space-between;
    padding: 10px;
    border-radius: 10px;
-   cursor: url(../../cursor2.png), auto;
+   cursor: url(/cursor2.png), auto;
 }
 
 .removebtn:hover {
