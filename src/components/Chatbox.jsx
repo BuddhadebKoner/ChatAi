@@ -18,7 +18,11 @@ export default function Components() {
          {
             noChat ?
                (<div className="no_chat_text">
-                  <p>Not <br />For Beginners</p>
+                  <section class="ware-section">
+                     <p>This is for educational purposes. This web app is built using the chat API, with UI inspiration taken from GPT. Use this at your own risk. For bug reports or any queries, please contact me at:</p>
+                     <a href="https://buddhadebkoner.vercel.app" target='_blank'>buddhadebkoner.com</a>
+                  </section>
+
                </div>)
                : (
                   <div className="chats_container">

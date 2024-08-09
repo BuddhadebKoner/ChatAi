@@ -13,12 +13,20 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 3rem;
     font-weight: 700;
     color: white;
-    opacity: 0.3;
+    opacity: 0.4;
+    padding: 4rem;
     /* display: none; */
 }
+.no_chat_text p {
+    font-size: 1rem;
+}
+
+.contact-link:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}
+
 
 .chats_container {
     width: 100%;
